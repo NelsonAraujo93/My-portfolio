@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { gatAllGamesAPI } from '../redux/games/gamesSlice';
 import '../styles/home.css';
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const { games } = useSelector((store) => store.games);
+
+  useEffect(() => {
+    dispatch(gatAllGamesAPI());
+  }, [dispatch]);
+
   return (
     <section>
       <div className="wrapper">
