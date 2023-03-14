@@ -1,7 +1,7 @@
-main.main-app {
+.wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  box-sizing: border-box;
 }
