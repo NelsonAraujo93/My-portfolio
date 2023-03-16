@@ -1,0 +1,91 @@
+.team-header img {
+  width: 200px;
+}
+
+.team-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tittle {
+  font-size: 40px;
+}
+
+.players-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+  justify-content: center;
+}
+
+.player-card {
+  width: 22%;
+  background: gray;
+  border-radius: 8px;
+  box-shadow: 0 0 black;
+  padding: 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  gap: 4px;
+}
+
+.player-card h3,
+.player-card h4,
+.player-card h5 {
+  margin: 0;
+}
+
+img.match-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+article.match-card {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+}
+
+.vs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background: gray;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.matches-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-around;
+}
+
+.home,
+.visitor  {
+  flex: 1 0 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.home.winner  {
+  background: green;
+}
+
+
+.visitor.winner {
+  background: red;
+}

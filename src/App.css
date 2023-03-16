@@ -4,7 +4,7 @@ main.main-app {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  height: 100vh;
+  height: auto;
   width: 100%;
   padding: 50px;
 }

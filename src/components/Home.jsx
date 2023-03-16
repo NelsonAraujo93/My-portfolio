@@ -16,6 +16,11 @@ export default function Home() {
       <div className="wrapper">
         <h1>Wellcome to world metrics</h1>
         <p>Choose one of the options or use the filter bellow</p>
+        {
+          games.map((game)=>(
+            <div key={game.id}>{game.id}</div>
+          ))
+        }
       </div>
     </section>
   );

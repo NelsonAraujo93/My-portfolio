@@ -5,10 +5,7 @@ export const gatAllGamesAPI = createAsyncThunk('games/fetch', () => (
   new Promise((resolve, reject) => {
     axios.get('https://www.balldontlie.io/api/v1/games?seasons[]=2022&page=49')
       .then(({ data }) => {
-        const nArray = [];
-        console.log(data);
-        debugger;
-        resolve(nArray);
+        resolve(data.data);
       })
       .catch((error) => {
         reject(error);
@@ -22,7 +19,7 @@ const initialState = {
   error: '',
 };
 
-const countriesSlice = createSlice({
+const gamesSlice = createSlice({
   name: 'games',
   initialState,
   reducers: {
@@ -46,8 +43,8 @@ const countriesSlice = createSlice({
       .addCase(gatAllGamesAPI.pending, (state) => ({ ...state, status: 'loading' }))
       .addCase(gatAllGamesAPI.fulfilled, (state, { payload }) => ({
         ...state,
-        missions: payload,
-        status: 'succeeded',
+        games: payload,
+        status: 'succeed',
       }))
       .addCase(gatAllGamesAPI.rejected, (state, { error }) => ({
         ...state,
@@ -57,6 +54,6 @@ const countriesSlice = createSlice({
   },
 });
 
-export const { bookMission, leaveMission } = countriesSlice.actions;
+export const { bookMission, leaveMission } = gamesSlice.actions;
 
-export default countriesSlice.reducer;
+export default gamesSlice.reducer;
