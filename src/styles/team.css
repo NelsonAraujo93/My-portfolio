@@ -2,15 +2,21 @@
   width: 200px;
 }
 
+section.team-players {
+  margin-bottom: 10px;
+}
+
 .team-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .tittle {
   font-size: 40px;
+  margin: 0;
 }
 
 .players-list {
@@ -21,8 +27,8 @@
 }
 
 .player-card {
-  width: 22%;
-  background: gray;
+  width: 30%;
+  background: #c73e75;
   border-radius: 8px;
   box-shadow: 0 0 black;
   padding: 6px;
@@ -42,33 +48,37 @@
 }
 
 img.match-icon {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 
-article.match-card {
+.match-card {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
   justify-content: center;
   align-items: center;
+  background: #ed4c8b;
+  position: relative;
+  box-sizing: border-box;
+  padding: 12px 12px 40px 12px;
+}
+
+.pair {
+  background: #ed5b93;
 }
 
 .vs {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  background: gray;
-  border-radius: 8px;
-  padding: 8px;
 }
 
 .matches-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
   justify-content: space-around;
 }
 
@@ -82,10 +92,31 @@ article.match-card {
 }
 
 .home.winner  {
-  background: green;
+  background: #ed5b93;
 }
 
 
 .visitor.winner {
-  background: red;
+  background: #ce4276;
+}
+
+
+h2.match-status {
+  position: absolute;
+  color: #97204c;
+  bottom: -5px;
+  font-size: 20px;
+  opacity: .6;
+}
+
+.vs h2, .vs h3 {
+  margin: 0;
+}
+
+h1.subtitle {
+  text-align: center;
+  background: #c73e74;
+  margin: 0;
+  padding: 16px 0;
+  font-size: 32px;
 }

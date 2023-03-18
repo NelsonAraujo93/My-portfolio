@@ -11,9 +11,9 @@
 .side-menu {
   height: 100%;
   background: rgba(0, 0, 0, 0.485);
-  width: 60%;
+  width: 80%;
   position: absolute;
-  left: -60%;
+  left: -80%;
   top: 0;
   transition: all 250ms ease-in-out;
   display: flex;
@@ -23,11 +23,18 @@
 .side-menu.active {
   height: 100%;
   background: black;
-  width: 60%;
+  width: 80%;
   position: absolute;
   left: 0;
   top: 0;
   box-shadow: 5px 0px 10px 10px #0000004a;
+  z-index: 2;
+}
+
+.side-menu .menu-btn-container {
+  height: 40px;
+  width: 40px;
+  align-self: flex-end;
 }
 
 .side-title h2 {
@@ -59,8 +66,8 @@
 }
 
 .side-menu-item h3 {
-  font-size: 30px;
-  line-height: 50px;
+  font-size: 26px;
+  line-height: 30px;
   margin: 0px;
   position: relative;
 }
@@ -73,7 +80,7 @@
 
 .side-menu-item p {
   font-weight: 700;
-  font-size: 19px;
+  font-size: 16px;
   margin: 0;
   position: relative;
 }
@@ -81,7 +88,7 @@
 .team-logo {
   position: absolute;
   width: 100px;
-  height: 80px;
+  height: 54px;
   left: 0px;
   background: white;
   border-radius: 0 50px 50px 0;
@@ -93,8 +100,8 @@
 }
 
 .team-logo img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   position: absolute;
   right: 20px;
@@ -130,4 +137,29 @@ a.active .team-logo {
 
 a.active .hidden-text {
   left: 0;
+}
+
+section.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  background: #c73e75;
+}
+
+.menu-btn-container {
+  height: 40px;
+  width: 40px;
+}
+
+button.btn-menu {
+  background: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.navbar h4 {
+  color: #fff;
 }

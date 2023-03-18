@@ -1,10 +1,10 @@
 main.main-app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   box-sizing: border-box;
   height: auto;
   width: 100%;
-  padding: 50px;
+  background: #ed4c8b;
+  color: white;
 }

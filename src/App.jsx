@@ -6,6 +6,7 @@ import Filter from './components/Filter';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import Team from './components/Team';
+import MatchDetail from './components/MatchDetail';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/team/:id',
         element: <Team />,
+      },
+      {
+        path: '/match/:id',
+        element: <MatchDetail />,
       },
     ],
   },

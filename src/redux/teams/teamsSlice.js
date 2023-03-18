@@ -34,7 +34,7 @@ export const getTeamGamesAPI = createAsyncThunk('team/fetch', (id) => (
     };
     axios.request(options)
       .then(({ data }) => {
-        resolve(data.response);
+        resolve(data.response.slice(-20));
       })
       .catch((error) => {
         reject(error);
@@ -69,6 +69,7 @@ const initialState = {
   selectedTeam: null,
   selectedTeamGames: null,
   selectedTeamPlayers: null,
+  selectedGameTeam: null,
   error: '',
 };
 
@@ -88,6 +89,17 @@ const teamsSlice = createSlice({
         return team;
       });
       return { ...state, selectedTeam: selected };
+    },
+    selectGameById: (state, { payload }) => {
+      let selected = null;
+      debugger;
+      state.selectedTeamGames.map((game) => {
+        if (game.id == payload) {
+          selected = game;
+        }
+        return game;
+      });
+      return { ...state, selectedGameTeam: selected };
     },
   },
   extraReducers: (builder) => {
@@ -128,6 +140,6 @@ const teamsSlice = createSlice({
   },
 });
 
-export const { selectTeam, selectTeamById } = teamsSlice.actions;
+export const { selectTeam, selectTeamById, selectGameById } = teamsSlice.actions;
 
 export default teamsSlice.reducer;
