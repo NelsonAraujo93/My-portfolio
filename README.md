@@ -18,6 +18,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
+  - [Video Demo](#video-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -71,17 +72,15 @@ This is a building website using React, React-Router, Redux and Jest
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO 
-
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 - [Live Demo Link](https://nba-news-static.onrender.com)
  
- ## - Description video link <a name="presentation"></a>
+## Description video link <a name="video-demo"></a>
    
-   [JavaScript Capstone Module 3](https://www.loom.com/share/6556cc60605648fca142268781ff6b17)
+ - [JavaScript Capstone Module 3](https://www.loom.com/share/6556cc60605648fca142268781ff6b17)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>-->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -156,7 +155,7 @@ If you like this project take the time to give feedback, we will appreciate it.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-We would like to thank Microverse for giving me the chance to improve my codding.
+A unique and warm acknowledgment to Nelson Sakwa, for creating such a great UI, and allowing people like me to work with it. [Behance profile ](https://www.behance.net/sakwadesignstudio).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
