@@ -1,0 +1,43 @@
+import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import ErrorPage from './components/ErrorPage';
+import Home from './components/Home';
+import Filter from './components/Filter';
+import Team from './components/Team';
+import MatchDetail from './components/MatchDetail';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Filter />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: '/team/:id',
+        element: <Team />,
+      },
+      {
+        path: '/match/:id',
+        element: <MatchDetail />,
+      },
+    ],
+  },
+]);
+
+function App() {
+  return (
+    <main className="main-app">
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </main>
+  );
+}
+
+export default App;

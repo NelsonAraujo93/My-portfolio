@@ -1,0 +1,126 @@
+.team-header img {
+  width: 200px;
+}
+
+section.team-players {
+  margin-bottom: 10px;
+}
+
+.team-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.tittle {
+  font-size: 40px;
+  margin: 0;
+}
+
+.players-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+  justify-content: center;
+}
+
+.player-card {
+  width: 30%;
+  background: #c73e75;
+  border-radius: 8px;
+  box-shadow: 0 0 black;
+  padding: 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  gap: 4px;
+}
+
+.player-card h3,
+.player-card h4,
+.player-card h5 {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+img.match-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.match-card {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  background: #ed4c8b;
+  position: relative;
+  box-sizing: border-box;
+  padding: 12px 12px 40px 12px;
+  color: white;
+  border: none;
+}
+
+.pair {
+  background: #ed5b93;
+}
+
+.vs {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.matches-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.home,
+.visitor {
+  flex: 1 0 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.home.winner {
+  background: #ed5b93;
+}
+
+.visitor.winner {
+  background: #ce4276;
+}
+
+h2.match-status {
+  position: absolute;
+  color: #97204c;
+  bottom: -5px;
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+.vs h2,
+.vs h3 {
+  margin: 0;
+}
+
+h1.subtitle {
+  text-align: center;
+  background: #c73e74;
+  margin: 0;
+  padding: 16px 0;
+  font-size: 32px;
+}

@@ -1,0 +1,10 @@
+section.team-header.match-details {
+  flex-direction: row;
+  gap: 50px;
+}
+
+.match-details.team-header img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
