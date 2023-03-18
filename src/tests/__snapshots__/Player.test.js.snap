@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for <Player /> component Should match the snapshot 1`] = `
+<article
+  className="player-card"
+  data-testid="player-container"
+>
+  <h3>
+    Nelson
+  </h3>
+  <h3>
+    Araujo
+  </h3>
+  <h4>
+    23
+  </h4>
+  <h4>
+    FC
+  </h4>
+  <h5>
+    1996-10-24
+  </h5>
+</article>
+`;

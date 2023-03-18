@@ -12,7 +12,7 @@ import { getAllGamesAPI } from '../redux/games/gamesSlice';
 import SideMenuItem from './SideMenuItem';
 
 const SideMenu = ({ teams, closeMenu, chooseTeam }) => (
-  <ul className="side-teams">
+  <ul data-testid="side-container" className="side-teams">
     {
       teams.map((team) => (
         <SideMenuItem closeMenu={closeMenu} chooseTeam={chooseTeam} team={team} key={`${team.id}-key`} />
@@ -35,6 +35,7 @@ function Filter() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { teams } = useSelector((store) => store.teams);
+
   useEffect(() => {
     if (teamsStatus === 'failed') return;
     if (gamesStatus === 'failed') return;

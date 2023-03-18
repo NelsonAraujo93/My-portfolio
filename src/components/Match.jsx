@@ -33,7 +33,7 @@ function Match({ data, team, odd }) {
         <h2 className="match-status">{data.status.long}</h2>
         <div className="vs">
           <div className="home">
-            <img className="match-icon" src={data.teams.home.logo} alt={`${data.teams.home.nickname}-logo`} />
+            <img className="match-icon" src={data.teams.home.logo} alt={`${data.teams.home.code}-logo`} />
             <h2>{data.scores.home.points}</h2>
             <h3>{data.teams.home.code}</h3>
           </div>

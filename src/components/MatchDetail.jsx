@@ -39,7 +39,7 @@ function MatchDetail() {
 
   return (
     <>
-      <section className="team-header match-details">
+      <section className="team-header match-details" data-testid="match-container">
         <div className="home">
           <h3 className="tittle">{selectedGame.teams.home.code}</h3>
           <img src={selectedGame.teams.home.logo} alt={`${selectedGame.teams.home.code}-logo`} />
