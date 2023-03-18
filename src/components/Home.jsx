@@ -1,5 +1,5 @@
 import { BallTriangle } from 'react-loader-spinner';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import '../styles/home.css';
 import Match from './Match';
 
@@ -7,7 +7,7 @@ export default function Home() {
   const { games, inCommingGames } = useSelector((store) => store.games);
   let color = false;
 
-  const createMatch = (item, col, i) => {
+  const createMatch = (item, col) => {
     color = col ? !color : color;
     return (
       <Match
@@ -16,10 +16,10 @@ export default function Home() {
         team={false}
         odd={color}
       />
-    )
-  }
+    );
+  };
 
-  if(!games || !inCommingGames) {
+  if (!games || !inCommingGames) {
     return (
       <div className="loading-screen">
         <BallTriangle
@@ -28,11 +28,10 @@ export default function Home() {
           radius={5}
           color="#712041"
           ariaLabel="ball-triangle-loading"
-          visible={true}
-        >
-        </BallTriangle>
+          visible
+        />
       </div>
-    )
+    );
   }
   return (
     <>
@@ -41,7 +40,7 @@ export default function Home() {
         <div className="matches-list">
           {
             games.map((item, i) => (
-              createMatch(item, (i+1)%2===0, i)
+              createMatch(item, (i + 1) % 2 === 0, i)
             ))
           }
         </div>
@@ -51,7 +50,7 @@ export default function Home() {
         <div className="matches-list">
           {
             inCommingGames.map((item, i) => (
-              createMatch(item, (i+1)%2===0, i)
+              createMatch(item, (i + 1) % 2 === 0, i)
             ))
           }
         </div>

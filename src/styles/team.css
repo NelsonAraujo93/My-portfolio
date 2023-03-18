@@ -45,6 +45,9 @@ section.team-players {
 .player-card h4,
 .player-card h5 {
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 img.match-icon {
@@ -63,6 +66,8 @@ img.match-icon {
   position: relative;
   box-sizing: border-box;
   padding: 12px 12px 40px 12px;
+  color: white;
+  border: none;
 }
 
 .pair {
@@ -83,7 +88,7 @@ img.match-icon {
 }
 
 .home,
-.visitor  {
+.visitor {
   flex: 1 0 0;
   justify-content: center;
   align-items: center;
@@ -91,25 +96,24 @@ img.match-icon {
   flex-direction: column;
 }
 
-.home.winner  {
+.home.winner {
   background: #ed5b93;
 }
-
 
 .visitor.winner {
   background: #ce4276;
 }
-
 
 h2.match-status {
   position: absolute;
   color: #97204c;
   bottom: -5px;
   font-size: 20px;
-  opacity: .6;
+  opacity: 0.6;
 }
 
-.vs h2, .vs h3 {
+.vs h2,
+.vs h3 {
   margin: 0;
 }
 

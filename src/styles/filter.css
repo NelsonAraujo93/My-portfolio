@@ -27,8 +27,13 @@
   position: absolute;
   left: 0;
   top: 0;
-  box-shadow: 5px 0px 10px 10px #0000004a;
+  box-shadow: 5px 0 10px 10px #0000004a;
   z-index: 2;
+}
+
+.menu-btn-container {
+  height: 40px;
+  width: 40px;
 }
 
 .side-menu .menu-btn-container {
@@ -60,7 +65,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border-radius: 0px;
+  border-radius: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.51);
   position: relative;
 }
@@ -68,7 +73,7 @@
 .side-menu-item h3 {
   font-size: 26px;
   line-height: 30px;
-  margin: 0px;
+  margin: 0;
   position: relative;
 }
 
@@ -89,7 +94,7 @@
   position: absolute;
   width: 100px;
   height: 54px;
-  left: 0px;
+  left: 0;
   background: white;
   border-radius: 0 50px 50px 0;
   padding: 10px 0;
@@ -148,11 +153,6 @@ section.navbar {
   background: #c73e75;
 }
 
-.menu-btn-container {
-  height: 40px;
-  width: 40px;
-}
-
 button.btn-menu {
   background: none;
   border: none;
@@ -162,4 +162,19 @@ button.btn-menu {
 
 .navbar h4 {
   color: #fff;
+}
+
+.side-menu-item button {
+  width: 100%;
+  background: #202020;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.51);
+  position: relative;
 }

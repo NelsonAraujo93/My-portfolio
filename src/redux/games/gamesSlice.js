@@ -6,19 +6,20 @@ export const getAllGamesAPI = createAsyncThunk('games/fetch', () => (
     const options = {
       method: 'GET',
       url: 'https://api-nba-v1.p.rapidapi.com/games',
-      params: {league: 'standard', season: '2022'},
+      params: { league: 'standard', season: '2022' },
       headers: {
         'X-RapidAPI-Key': '218e368c20msh165c2ac646da4abp112c29jsn5f28157a5ba2',
-        'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-      }
+        'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com',
+      },
     };
     axios.request(options)
       .then(({ data }) => {
-        const scheduledMatches = data.response.filter((game)=> game.status.long === 'Scheduled');
-        const finishedMatches = data.response.filter((game)=> game.status.long === 'Finished');
+        const allGames = data.response;
+        const scheduledMatches = data.response.filter((game) => game.status.long === 'Scheduled');
+        const finishedMatches = data.response.filter((game) => game.status.long === 'Finished');
         const array = finishedMatches.slice(-14);
         const scheduleArray = scheduledMatches.slice(-14);
-        resolve({ array, scheduleArray });
+        resolve({ array, scheduleArray, allGames });
       })
       .catch((error) => {
         reject(error);
@@ -28,6 +29,7 @@ export const getAllGamesAPI = createAsyncThunk('games/fetch', () => (
 
 const initialState = {
   games: [],
+  fullGames: null,
   inCommingGames: null,
   selectedGame: null,
   status: 'idle',
@@ -38,14 +40,11 @@ const gamesSlice = createSlice({
   name: 'games',
   initialState,
   reducers: {
-    selectGameMatch: (state, { payload }) => {
-      return { ...state, selectedGame: payload };
-    },
+    selectGameMatch: (state, { payload }) => ({ ...state, selectedGame: payload }),
     selectGameMatchById: (state, { payload }) => {
       let selected = null;
-      debugger;
-      state.games.map((game) => {
-        if (game.id == payload) {
+      state.fullGames.map((game) => {
+        if (game.id === parseInt(payload, 10)) {
           selected = game;
         }
         return game;
@@ -55,15 +54,16 @@ const gamesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getAllGamesAPI.pending, (state) => ({ ...state, status: 'loading', games:null, inCommingGames: null }))
-      .addCase(getAllGamesAPI.fulfilled, (state, { payload }) => {
-        return ({
-            ...state,
-            games: payload.array,
-            inCommingGames: payload.scheduleArray,
-            status: 'succeed',
-        })
-      })
+      .addCase(getAllGamesAPI.pending, (state) => ({
+        ...state, status: 'loading', games: null, inCommingGames: null,
+      }))
+      .addCase(getAllGamesAPI.fulfilled, (state, { payload }) => ({
+        ...state,
+        games: payload.array,
+        inCommingGames: payload.scheduleArray,
+        fullGames: payload.allGames,
+        status: 'succeed',
+      }))
       .addCase(getAllGamesAPI.rejected, (state, { error }) => ({
         ...state,
         error: error.message,
@@ -72,6 +72,6 @@ const gamesSlice = createSlice({
   },
 });
 
-export const { selectGame, selectGameMatchById } = gamesSlice.actions;
+export const { selectGameMatch, selectGameMatchById } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

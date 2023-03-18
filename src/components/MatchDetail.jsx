@@ -1,69 +1,62 @@
 import { useEffect } from 'react';
+import { BallTriangle } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectGameMatchById } from '../redux/games/gamesSlice';
-import { selectGameById } from '../redux/teams/teamsSlice';
 import '../styles/team.css';
+import '../styles/match.css';
 
 function MatchDetail() {
-  const { selectedGameTeam, selectedTeam } = useSelector((state) => state.teams);
-  const { selectedGame, games } = useSelector((state) => state.games);
+  const { selectedGame, fullGames } = useSelector((state) => state.games);
   const { id } = useParams();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if(!selectedTeam) {
-      dispatch(selectGameMatchById(id));
-    } else {
-      if (!selectedGameTeam) {
-        dispatch(selectGameById(id));
-      }
-    }
-  }, [selectedGameTeam]);
-
-  if (!selectedGameTeam && !selectedGame) {
-    return (
-      <h1>Select a team from side menu</h1>
-    )
+  const options = {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
   };
 
-  if(selectedGame) {
+  useEffect(() => {
+    if (fullGames) {
+      dispatch(selectGameMatchById(id));
+    }
+  }, [dispatch, fullGames]);
+
+  if (!fullGames || !selectedGame) {
     return (
-      <>
-        <section className="team-header">
-          <div className='home'>
-            <h3 className="tittle">{selectedGame.teams.home.name}</h3>
-            <img src={selectedGame.teams.home.logo} alt={`${selectedGame.teams.home.name}-logo`}></img>
-          </div>
-          <div className='visitor'>
-            <h3 className="tittle">{selectedGame.teams.visitors.name}</h3>
-            <img src={selectedGame.teams.visitors.logo} alt={`${selectedGame.teams.visitors.name}-logo`}></img>
-          </div>
-        </section>
-        <section className="match-data">
-          <h1 className="subtitle">Details</h1>
-        </section>
-      </>
-    )
+      <div className="loading-screen">
+        <BallTriangle
+          height={150}
+          width={150}
+          radius={5}
+          color="#712041"
+          ariaLabel="ball-triangle-loading"
+          visible
+        />
+      </div>
+    );
   }
+
+  const date = new Date(selectedGame.date.start);
 
   return (
     <>
-      <section className="team-header">
-        <div className='home'>
-          <h3 className="tittle">{selectedGameTeam.teams.home.name}</h3>
-          <img src={selectedGameTeam.teams.home.logo} alt={`${selectedGameTeam.teams.home.name}-logo`}></img>
+      <section className="team-header match-details">
+        <div className="home">
+          <h3 className="tittle">{selectedGame.teams.home.code}</h3>
+          <img src={selectedGame.teams.home.logo} alt={`${selectedGame.teams.home.code}-logo`} />
+          <h2>{selectedGame.scores.home.points}</h2>
         </div>
-        <div className='visitor'>
-          <h3 className="tittle">{selectedGameTeam.teams.visitors.name}</h3>
-          <img src={selectedGameTeam.teams.visitors.logo} alt={`${selectedGameTeam.teams.visitors.name}-logo`}></img>
+        <div className="visitor">
+          <h3 className="tittle">{selectedGame.teams.visitors.code}</h3>
+          <img src={selectedGame.teams.visitors.logo} alt={`${selectedGame.teams.visitors.code}-logo`} />
+          <h2>{selectedGame.scores.visitors.points}</h2>
         </div>
       </section>
       <section className="match-data">
         <h1 className="subtitle">Details</h1>
+        <h2>{date.toLocaleDateString('en-US', options)}</h2>
       </section>
     </>
-  )
+  );
 }
 
 export default MatchDetail;

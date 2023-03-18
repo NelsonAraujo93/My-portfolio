@@ -8,8 +8,8 @@ export const getAllTeamsAPI = createAsyncThunk('teams/fetch', () => (
       url: 'https://api-nba-v1.p.rapidapi.com/teams',
       headers: {
         'X-RapidAPI-Key': '218e368c20msh165c2ac646da4abp112c29jsn5f28157a5ba2',
-        'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-      }
+        'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com',
+      },
     };
     axios.request(options)
       .then(({ data }) => {
@@ -26,11 +26,11 @@ export const getTeamGamesAPI = createAsyncThunk('team/fetch', (id) => (
     const options = {
       method: 'GET',
       url: 'https://api-nba-v1.p.rapidapi.com/games',
-      params: {season: '2022', team: id},
+      params: { season: '2022', team: id },
       headers: {
         'X-RapidAPI-Key': '218e368c20msh165c2ac646da4abp112c29jsn5f28157a5ba2',
-        'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-      }
+        'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com',
+      },
     };
     axios.request(options)
       .then(({ data }) => {
@@ -47,11 +47,11 @@ export const getTeamPlayerAPI = createAsyncThunk('team/players', (id) => (
     const options = {
       method: 'GET',
       url: 'https://api-nba-v1.p.rapidapi.com/players',
-      params: {team: id, season: '2022'},
+      params: { team: id, season: '2022' },
       headers: {
         'X-RapidAPI-Key': '218e368c20msh165c2ac646da4abp112c29jsn5f28157a5ba2',
-        'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-      }
+        'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com',
+      },
     };
     axios.request(options)
       .then(({ data }) => {
@@ -77,13 +77,11 @@ const teamsSlice = createSlice({
   name: 'teams',
   initialState,
   reducers: {
-    selectTeam: (state, { payload }) => {
-      return { ...state, selectedTeam: payload };
-    },
+    selectTeam: (state, { payload }) => ({ ...state, selectedTeam: payload }),
     selectTeamById: (state, { payload }) => {
       let selected = null;
       state.teams.map((team) => {
-        if (team.id == payload) {
+        if (team.id === parseInt(payload, 10)) {
           selected = team;
         }
         return team;
@@ -92,9 +90,8 @@ const teamsSlice = createSlice({
     },
     selectGameById: (state, { payload }) => {
       let selected = null;
-      debugger;
       state.selectedTeamGames.map((game) => {
-        if (game.id == payload) {
+        if (game.id === parseInt(payload, 10)) {
           selected = game;
         }
         return game;
@@ -136,7 +133,7 @@ const teamsSlice = createSlice({
         ...state,
         error: error.message,
         status: 'failed',
-      }))
+      }));
   },
 });
 

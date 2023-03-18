@@ -1,38 +1,47 @@
-import { BallTriangle } from "react-loader-spinner";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Outlet } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { BallTriangle } from 'react-loader-spinner';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import '../styles/filter.css';
-import { AiFillCloseCircle, AiOutlineHome, AiOutlineMenu } from "react-icons/ai";
-import { useEffect, useState } from "react";
-import { getAllTeamsAPI } from "../redux/teams/teamsSlice";
+import {
+  AiFillCloseCircle, AiOutlineArrowLeft, AiOutlineHome, AiOutlineMenu,
+} from 'react-icons/ai';
+import { useEffect, useState } from 'react';
+import { getAllTeamsAPI, selectTeam } from '../redux/teams/teamsSlice';
 import { getAllGamesAPI } from '../redux/games/gamesSlice';
-import SideMenuItem from "./SideMenuItem";
+import SideMenuItem from './SideMenuItem';
 
-const SideMenu = ({ teams, closeMenu }) => {
-  return (
-    <ul className="side-teams">
-      {
-        teams.map((team)=> (
-          <SideMenuItem closeMenu={closeMenu} team={team} key={`${team.id}-key`} />
-        ))
-      }
-    </ul>
-  )
-}
+const SideMenu = ({ teams, closeMenu, chooseTeam }) => (
+  <ul className="side-teams">
+    {
+      teams.map((team) => (
+        <SideMenuItem closeMenu={closeMenu} chooseTeam={chooseTeam} team={team} key={`${team.id}-key`} />
+      ))
+    }
+  </ul>
+);
+
+SideMenu.propTypes = {
+  teams: PropTypes.instanceOf(Array).isRequired,
+  closeMenu: PropTypes.func.isRequired,
+  chooseTeam: PropTypes.func.isRequired,
+};
 
 function Filter() {
+  const [home, setHome] = useState(true);
   const teamsStatus = useSelector((store) => store.teams.status);
   const gamesStatus = useSelector((store) => store.games.status);
-  const [ openMenu, setOpenMenu ] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const dispatch = useDispatch();
-  const { teams } =  useSelector((store) => store.teams);
+  const navigate = useNavigate();
+  const { teams } = useSelector((store) => store.teams);
   useEffect(() => {
     if (teamsStatus === 'failed') return;
     if (gamesStatus === 'failed') return;
     if (teams) return;
     dispatch(getAllTeamsAPI());
     dispatch(getAllGamesAPI());
-  }, []);
+  }, [selectTeam]);
   return (
     <>
       {
@@ -44,38 +53,59 @@ function Filter() {
               radius={5}
               color="#712041"
               ariaLabel="ball-triangle-loading"
-              visible={true}
-            >
-            </BallTriangle>
+              visible
+            />
           </div>
         )
       }
       <section
-        className={openMenu ? "side-menu active" : "side-menu"}
+        className={openMenu ? 'side-menu active' : 'side-menu'}
       >
         <div className="menu-btn-container">
-          <button className="btn-menu" onClick={()=> setOpenMenu(false)}>
+          <button type="button" className="btn-menu" onClick={() => setOpenMenu(false)}>
             <AiFillCloseCircle size={26} color="#fff" />
           </button>
         </div>
         {
           teams && (
-            <SideMenu teams={teams} closeMenu={()=> setOpenMenu(false)}/>
+            <SideMenu
+              teams={teams}
+              closeMenu={() => setOpenMenu(false)}
+              chooseTeam={() => { setHome(false); }}
+            />
           )
         }
       </section>
       <section className="navbar">
-        <div className="menu-btn-container">
-          <button className="btn-menu" onClick={()=> setOpenMenu(true)}>
-            <AiOutlineMenu size={26} color="#fff" />
-          </button>
-        </div>
+        {
+          !home ? (
+            <div className="menu-btn-container">
+              <button type="button" className="btn-menu">
+                <AiOutlineArrowLeft
+                  size={26}
+                  color="#fff"
+                  onClick={() => {
+                    setHome(true);
+                    dispatch(selectTeam(null));
+                    navigate('/');
+                  }}
+                />
+              </button>
+            </div>
+          ) : (
+            <div className="menu-btn-container">
+              <button type="button" className="btn-menu" onClick={() => setOpenMenu(true)}>
+                <AiOutlineMenu size={26} color="#fff" />
+              </button>
+            </div>
+          )
+        }
         <h4>NBA SEASON 2022 - 2023</h4>
         <div className="menu-btn-container">
           <NavLink
             to="/"
           >
-            <button className="btn-menu">
+            <button type="button" className="btn-menu">
               <AiOutlineHome size={26} color="#fff" />
             </button>
           </NavLink>
@@ -87,7 +117,7 @@ function Filter() {
         )
       }
     </>
-  )  
+  );
 }
 
 export default Filter;

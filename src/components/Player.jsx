@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function Player({ data }) {
   return (
     <article className="player-card">
@@ -7,7 +9,11 @@ function Player({ data }) {
       <h4>{data.leagues.standard.pos}</h4>
       <h5>{data.birth.date}</h5>
     </article>
-  )
+  );
 }
+
+Player.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default Player;
