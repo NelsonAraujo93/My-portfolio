@@ -75,7 +75,7 @@ This is a building website using React, React-Router, Redux and Jest
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://nelsonaraujo93.github.io/JavaScriptCapstoneModule2/)
+- [Live Demo Link](https://nba-news-static.onrender.com)
  
  ## - Description video link <a name="presentation"></a>
    
