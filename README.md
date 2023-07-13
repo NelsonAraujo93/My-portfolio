@@ -44,7 +44,7 @@
 
 ### Deployment
 
-Deployment link - [Live-demo](https://rails-budget-app-prxn.onrender.com)
+Deployment link - [Live-demo](https://nelsonaraujo93.github.io/MyMicroversePortfolio)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -58,7 +58,7 @@ Deployment link - [Live-demo](https://rails-budget-app-prxn.onrender.com)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
-- **Make improvements with feedbacks**  
+- **Make improvements with feedback**  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -66,7 +66,7 @@ Deployment link - [Live-demo](https://rails-budget-app-prxn.onrender.com)
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/NelsonAraujo93/Budget-app/issues).
+Feel free to check the [issues page](https://github.com/NelsonAraujo93/My-portfolio/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,7 +86,7 @@ I would like to thank Microverse for giving me the chance of working as a Full-S
 
 ## ❓ FAQ <a name="faq"></a>
 
-- **What is this project main purpose?**
+- **What is this project's main purpose?**
 
   - Share Nelson Araujo's portfolio.
 
